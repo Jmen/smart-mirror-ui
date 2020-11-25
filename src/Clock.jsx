@@ -34,7 +34,7 @@ export class Clock extends React.Component {
         };
 
         return (
-            <div style={{margin: "75px"}}>
+            <div style={{marginLeft: "75px", marginTop: "125px"}}>
                 <div style={{fontSize:30}}>{this.state.time.toLocaleDateString("en-GB", date)}</div>
                 <div style={{fontSize:175}}>{this.state.time.toLocaleTimeString("en-GB", clock)}</div>
             </div>
