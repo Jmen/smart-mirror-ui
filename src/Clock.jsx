@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export class Clock extends React.Component {
     constructor(props) {
         super(props)
@@ -20,11 +21,23 @@ export class Clock extends React.Component {
     };
 
     render() {
-        const h = this.state.time.getHours()
-        const m = this.state.time.getMinutes()
+        let date = {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        };
+
+        const clock = {
+            hour: "2-digit",
+            minute: "2-digit"
+        };
 
         return (
-            <div style={{margin: "200px"}}>{h % 12}:{(m < 10 ? '0' + m : m)}</div>
+            <div style={{margin: "200px"}}>
+                <div style={{fontSize:40}}>{this.state.time.toLocaleDateString("en-GB", date)}</div>
+                <div style={{fontSize:200}}>{this.state.time.toLocaleTimeString("en-GB", clock)}</div>
+            </div>
         )
     }
 }
