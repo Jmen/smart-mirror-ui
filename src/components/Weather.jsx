@@ -30,7 +30,7 @@ export const Weather = () => {
                     <div style={{fontSize:30}}>Actual {temperature}&deg;C</div>
                     <div style={{fontSize:30}}>Feels Like</div>
                 </div>
-                <div style={{flewGrow: 1, marginLeft: 20}}>
+                <div style={{flexGrow: 1, marginLeft: 20}}>
                     <img src={icon} alt="weather icon" width="128" height="128"/>
                 </div>
             </div>
