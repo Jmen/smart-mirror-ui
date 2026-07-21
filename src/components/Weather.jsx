@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { DailyComparison } from "./DailyComparison";
 
 export const Weather = () => {
 
     const [temperature, setTemperature] = useState(100);
     const [feels_like, setFeelsLike] = useState(100);
     const [icon, setIcon] = useState('');
+    const [comparison, setComparison] = useState(null);
 
     useEffect( () => {
         const update = async () => {
@@ -15,6 +17,14 @@ export const Weather = () => {
             setTemperature(data.weather.temperature)
             setFeelsLike(data.weather.feels_like)
             setIcon(data.weather.icon)
+
+            if (data.weather.today && data.weather.yesterday) {
+                setComparison({
+                    today: data.weather.today,
+                    yesterday: data.weather.yesterday,
+                    current: data.weather.temperature
+                })
+            }
         };
 
         update()
@@ -36,5 +46,8 @@ export const Weather = () => {
             </div>
             <div style={{fontSize:100}}>{feels_like}&deg;C</div>
         </div>
+        {comparison &&
+            <DailyComparison today={comparison.today} yesterday={comparison.yesterday} current={comparison.current}/>
+        }
     </div>);
 };
